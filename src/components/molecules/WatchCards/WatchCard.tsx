@@ -3,7 +3,7 @@ import { Card } from "./watchData";
 
 export default function WatchCard({ img, title, price, bgColor }: Card) {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full font-serif">
       <div
         style={{ backgroundColor: bgColor ?? "#f5f5f5" }}
         className="w-full aspect-square flex items-center justify-center overflow-hidden"
@@ -17,8 +17,8 @@ export default function WatchCard({ img, title, price, bgColor }: Card) {
         />
       </div>
       <div className="pt-3">
-        <p className="text-black text-lg font-medium">{title}</p>
-        <p className="text-gray-500 text-sm">{price}</p>
+        <p className="text-black text-lg ">{title}</p>
+        <p className="text-gray-500 text-lg">{price}</p>
       </div>
     </div>
   );
