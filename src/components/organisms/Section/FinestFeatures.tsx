@@ -24,20 +24,20 @@ export default function FinestFeatures() {
 
       <div className="flex gap-20 justify-center mt-12">
         <div
-          className="w-200 mt-100"
-          style={{ transform: `translateY(-${scrollY * 0.05}px)` }}
+          className="w-200 mt-70"
+          style={{ transform: `translateY(-${scrollY * 0.1}px)` }}
         >
           <GridCards {...posts[0]} />
         </div>
 
         <div
           className="w-120"
-          style={{ transform: `translateX(-${scrollY * 0.1}px)` }}
+          style={{ transform: `translateY(-${scrollY * 0.1}px)` }}
         >
           <GridCards {...posts[1]} />
         </div>
       </div>
-      <div className="w-full text-black">
+      <div className="w-full flex gap-4 text-black">
         <Image
           src={"/Posts/bigImgSecond.jpg"}
           alt="Img"
