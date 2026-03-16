@@ -1,6 +1,5 @@
 import { Imperial_Script } from "next/font/google";
 import Button from "../Button/ButtonViewAll";
-import { div } from "motion/react-client";
 const imperial = Imperial_Script({
   subsets: ["latin"],
   weight: "400",
