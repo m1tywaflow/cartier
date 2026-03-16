@@ -13,7 +13,7 @@ export default function GridCards({ img, title, subtitle }: Posts) {
       />
       <div className="max-w-sm">
         <p className="text-black font-serif text-xl">{title}</p>
-        <p className="text-gray-500 font-serif text-xl">{subtitle}</p>
+        <p className="text-gray-400 font-serif text-xl">{subtitle}</p>
       </div>
     </div>
   );
