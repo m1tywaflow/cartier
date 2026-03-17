@@ -3,7 +3,7 @@ import { StickyScroll } from "@/components/molecules/StickyScroll/StickyScroll";
 export default function OurSelection() {
   return (
     <>
-      <section className="pb-200">
+      <section>
         <SelectionText />
         <div>
           <StickyScroll

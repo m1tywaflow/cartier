@@ -112,7 +112,7 @@ export function StickyScroll({
           >
             <Image
               src={slide.bgImage}
-              alt=""
+              alt="Watches"
               fill
               className="object-cover"
               priority={i === 0}
@@ -149,7 +149,7 @@ export function StickyScroll({
       </div>
 
       {/* imgs */}
-      <div className="w-[38%] h-full relative overflow-hidden z-10">
+      <div className="w-[38%] h-full relative  z-10">
         {slides.map((slide, i) => (
           <div
             key={i}
