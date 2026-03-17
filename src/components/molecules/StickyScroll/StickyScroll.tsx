@@ -40,7 +40,7 @@ export function StickyScroll({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: `+=${slides.length * 130 + 300}`,
+          end: `+=${slides.length * 300 + 500}`,
           pin: true,
           scrub: 1,
           pinSpacing: true,
@@ -149,7 +149,7 @@ export function StickyScroll({
       </div>
 
       {/* imgs */}
-      <div className="w-[38%] h-full relative  z-10">
+      <div className="w-[38%] h-full relative overflow-hidden z-10">
         {slides.map((slide, i) => (
           <div
             key={i}
