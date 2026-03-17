@@ -228,7 +228,7 @@ export function StickyScroll({
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const SCROLL_PER_SLIDE = 600;
+      const SCROLL_PER_SLIDE = 300;
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -237,7 +237,7 @@ export function StickyScroll({
           end: `+=${(slides.length - 1) * SCROLL_PER_SLIDE}`,
           pin: true,
           scrub: 1,
-          pinSpacing: true,
+          pinSpacing: false,
           anticipatePin: 1,
         },
       });
@@ -297,7 +297,10 @@ export function StickyScroll({
   }, [slides]);
 
   return (
-    <section ref={sectionRef} className="relative h-screen w-full flex overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative h-screen w-full flex overflow-hidden"
+    >
       {/* scene */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, i) => (
