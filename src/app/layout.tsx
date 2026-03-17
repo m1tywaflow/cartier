@@ -29,9 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LenisProvider>
-          <FirstVisitLoader>{children}</FirstVisitLoader>
-        </LenisProvider>
+        {/* <LenisProvider> */}
+        <FirstVisitLoader>{children}</FirstVisitLoader>
+        {/* </LenisProvider> */}
       </body>
     </html>
   );
