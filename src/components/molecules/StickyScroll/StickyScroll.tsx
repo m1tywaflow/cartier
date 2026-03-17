@@ -228,13 +228,11 @@ export function StickyScroll({
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const SCROLL_PER_SLIDE = 300;
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: `+=${(slides.length - 1) * SCROLL_PER_SLIDE}`,
+          end: `+=${(slides.length - 1) * 500}`,
           pin: true,
           scrub: 1,
           pinSpacing: true,
@@ -245,50 +243,51 @@ export function StickyScroll({
       slides.forEach((_, i) => {
         if (i === 0) return;
 
-        const pos = (i - 1) * 2;
+        // каждый слайд занимает ровно 1 единицу таймлайна
+        const pos = i - 1;
 
         tl.fromTo(
           bgsRef.current[i],
           { opacity: 0 },
-          { opacity: 1, duration: 1 },
+          { opacity: 1, duration: 0.5 },
           pos
         );
-        tl.to(bgsRef.current[i - 1], { opacity: 0, duration: 1 }, pos);
+        tl.to(bgsRef.current[i - 1], { opacity: 0, duration: 0.5 }, pos);
 
         tl.fromTo(
           imagesRef.current[i],
           { yPercent: 100, opacity: 0 },
-          { yPercent: 0, opacity: 1, duration: 1 },
+          { yPercent: 0, opacity: 1, duration: 0.5 },
           pos
         );
         tl.to(
           imagesRef.current[i - 1],
-          { yPercent: -30, opacity: 0, duration: 1 },
+          { yPercent: -30, opacity: 0, duration: 0.5 },
           pos
         );
 
         tl.fromTo(
           numbersRef.current[i],
           { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.5 },
-          pos + 0.5
+          { opacity: 1, y: 0, duration: 0.3 },
+          pos + 0.2
         );
         tl.to(
           numbersRef.current[i - 1],
-          { opacity: 0, y: -40, duration: 0.5 },
-          pos + 0.5
+          { opacity: 0, y: -40, duration: 0.3 },
+          pos + 0.2
         );
 
         tl.fromTo(
           labelsRef.current[i],
           { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.5 },
-          pos + 0.5
+          { opacity: 1, y: 0, duration: 0.3 },
+          pos + 0.2
         );
         tl.to(
           labelsRef.current[i - 1],
-          { opacity: 0, y: -20, duration: 0.5 },
-          pos + 0.5
+          { opacity: 0, y: -20, duration: 0.3 },
+          pos + 0.2
         );
       });
     }, sectionRef);
