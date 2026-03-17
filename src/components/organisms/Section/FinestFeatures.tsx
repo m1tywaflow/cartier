@@ -5,6 +5,11 @@ import LuxuryTimepieces from "@/components/atoms/Typography/LuxuryTimepieces";
 import GridCards from "@/components/molecules/GridPosts/GridCard";
 import { posts } from "@/components/molecules/GridPosts/gridData";
 import Image from "next/image";
+import { Imperial_Script } from "next/font/google";
+const imperial = Imperial_Script({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export default function FinestFeatures() {
   const [scrollY, setScrollY] = useState(0);
@@ -45,7 +50,10 @@ export default function FinestFeatures() {
           height={1400}
         />
         <div className="max-w-sm mt-12">
-          <h1 className="text-3xl font-serif">Attention to detail</h1>
+          <h1 className="text-3xl font-serif">
+            Attention to{" "}
+            <span className={` ${imperial.className} text-5xl`}>detail</span>
+          </h1>
           <h1 className="text-xl font-serif text-gray-400">
             Watch feature intricate design elements and finishes for a unique
             look. Options include hand-engraved patterns and precious gemstones.
