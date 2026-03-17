@@ -228,65 +228,75 @@ export function StickyScroll({
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const SCROLL = 700;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: `+=${(slides.length - 1) * 500}`,
+          end: `+=${(slides.length - 1) * SCROLL}`,
           pin: true,
-          scrub: 1,
           pinSpacing: true,
+          scrub: 1,
           anticipatePin: 1,
         },
       });
 
+      // firs slide see
+      gsap.set(bgsRef.current[0], { autoAlpha: 1 });
+      gsap.set(imagesRef.current[0], { autoAlpha: 1, yPercent: 0 });
+      gsap.set(labelsRef.current[0], { autoAlpha: 1, y: 0 });
+      gsap.set(numbersRef.current[0], { autoAlpha: 1, y: 0 });
+
+      // other hides
+      for (let i = 1; i < slides.length; i++) {
+        gsap.set(bgsRef.current[i], { autoAlpha: 0 });
+        gsap.set(imagesRef.current[i], { autoAlpha: 0, yPercent: 100 });
+        gsap.set(labelsRef.current[i], { autoAlpha: 0, y: 20 });
+        gsap.set(numbersRef.current[i], { autoAlpha: 0, y: 40 });
+      }
+
       slides.forEach((_, i) => {
         if (i === 0) return;
-
-        // каждый слайд занимает ровно 1 единицу таймлайна
         const pos = i - 1;
 
-        tl.fromTo(
-          bgsRef.current[i],
-          { opacity: 0 },
-          { opacity: 1, duration: 0.5 },
-          pos
-        );
-        tl.to(bgsRef.current[i - 1], { opacity: 0, duration: 0.5 }, pos);
+        // bg
+        tl.to(bgsRef.current[i - 1], { autoAlpha: 0, duration: 0.5 }, pos);
+        tl.to(bgsRef.current[i], { autoAlpha: 1, duration: 0.5 }, pos);
 
-        tl.fromTo(
-          imagesRef.current[i],
-          { yPercent: 100, opacity: 0 },
-          { yPercent: 0, opacity: 1, duration: 0.5 },
-          pos
-        );
+        // imgs
         tl.to(
           imagesRef.current[i - 1],
-          { yPercent: -30, opacity: 0, duration: 0.5 },
+          { yPercent: -30, autoAlpha: 0, duration: 0.5 },
+          pos
+        );
+        tl.to(
+          imagesRef.current[i],
+          { yPercent: 0, autoAlpha: 1, duration: 0.5 },
           pos
         );
 
-        tl.fromTo(
-          numbersRef.current[i],
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.3 },
+        // labels
+        tl.to(
+          labelsRef.current[i - 1],
+          { autoAlpha: 0, y: -20, duration: 0.3 },
           pos + 0.2
         );
         tl.to(
-          numbersRef.current[i - 1],
-          { opacity: 0, y: -40, duration: 0.3 },
+          labelsRef.current[i],
+          { autoAlpha: 1, y: 0, duration: 0.3 },
           pos + 0.2
         );
 
-        tl.fromTo(
-          labelsRef.current[i],
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.3 },
+        // numbers
+        tl.to(
+          numbersRef.current[i - 1],
+          { autoAlpha: 0, y: -40, duration: 0.3 },
           pos + 0.2
         );
         tl.to(
-          labelsRef.current[i - 1],
-          { opacity: 0, y: -20, duration: 0.3 },
+          numbersRef.current[i],
+          { autoAlpha: 1, y: 0, duration: 0.3 },
           pos + 0.2
         );
       });
@@ -300,7 +310,7 @@ export function StickyScroll({
       ref={sectionRef}
       className="relative h-screen w-full flex overflow-hidden"
     >
-      {/* scene */}
+      {/* bgs */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, i) => (
           <div
@@ -309,11 +319,11 @@ export function StickyScroll({
               if (el) bgsRef.current[i] = el;
             }}
             className="absolute inset-0"
-            style={{ opacity: i === 0 ? 1 : 0 }}
+            style={{ opacity: 0 }}
           >
             <Image
               src={slide.bgImage}
-              alt="Watches"
+              alt=""
               fill
               className="object-cover"
               priority={i === 0}
@@ -337,7 +347,7 @@ export function StickyScroll({
                 if (el) labelsRef.current[i] = el;
               }}
               className="absolute bottom-0 left-0"
-              style={{ opacity: i === 0 ? 1 : 0 }}
+              style={{ opacity: 0 }}
             >
               <p className="text-white text-lg font-medium mb-2">
                 {slide.category}
@@ -358,7 +368,7 @@ export function StickyScroll({
               if (el) imagesRef.current[i] = el;
             }}
             className="absolute inset-0"
-            style={{ opacity: i === 0 ? 1 : 0 }}
+            style={{ opacity: 0 }}
           >
             <Image
               src={slide.image}
@@ -371,8 +381,8 @@ export function StickyScroll({
         ))}
       </div>
 
-      {/* numbers */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none z-20">
+      {/* numberss*/}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
         {slides.map((slide, i) => (
           <div
             key={i}
@@ -380,9 +390,9 @@ export function StickyScroll({
               if (el) numbersRef.current[i] = el;
             }}
             className="absolute bottom-0"
-            style={{ opacity: i === 0 ? 1 : 0 }}
+            style={{ opacity: 0 }}
           >
-            <span className="text-[12rem] font-serif italic leading-none select-none text-white">
+            <span className="text-[12rem] font-serif italic text-white leading-none">
               {slide.index}
             </span>
           </div>
