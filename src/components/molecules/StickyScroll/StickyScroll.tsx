@@ -237,7 +237,7 @@ export function StickyScroll({
           end: `+=${(slides.length - 1) * SCROLL_PER_SLIDE}`,
           pin: true,
           scrub: 1,
-          pinSpacing: false,
+          pinSpacing: true,
           anticipatePin: 1,
         },
       });
