@@ -40,7 +40,7 @@ export function StickyScroll({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: `+=${slides.length * 500 + 1000}`,
+          end: `+=${slides.length * 800 + 1200}`,
           pin: true,
           scrub: 1,
           pinSpacing: true,
