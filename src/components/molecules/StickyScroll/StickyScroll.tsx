@@ -228,7 +228,7 @@ export function StickyScroll({
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const SCROLL = 700;
+      const SCROLL = 1000;
 
       const tl = gsap.timeline({
         scrollTrigger: {

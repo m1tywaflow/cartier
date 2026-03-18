@@ -58,7 +58,7 @@ const StickyScroll = dynamic(
     import("@/components/molecules/StickyScroll/StickyScroll").then(
       (mod) => mod.StickyScroll
     ),
-  { ssr: false } // 🔥 важно!
+  { ssr: false }
 );
 
 export default function OurSelection() {
