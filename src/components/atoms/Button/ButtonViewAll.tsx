@@ -1,12 +1,11 @@
-import React from "react";
 import styled from "styled-components";
 
-const Button = () => {
+const Button = ({ children = "View All" }: { children?: React.ReactNode }) => {
   return (
     <StyledWrapper>
       <button className="btn-31">
         <span className="text-container">
-          <span className="text">View All</span>
+          <span className="text">{children}</span>
         </span>
       </button>
     </StyledWrapper>

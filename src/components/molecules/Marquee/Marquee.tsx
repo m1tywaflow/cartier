@@ -7,7 +7,7 @@ export function Marquee({ text, speed = 30 }: MarqueeProps) {
   const repeated = Array(6).fill(text);
 
   return (
-    <div className="overflow-hidden bg-black py-4 border-y border-white/10">
+    <div className="overflow-hidden  py-4 border-y border-white/10">
       <div
         className="flex whitespace-nowrap"
         style={{ animation: `marquee ${speed}s linear infinite` }}
