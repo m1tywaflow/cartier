@@ -4,7 +4,7 @@ import "./globals.css";
 import FirstVisitLoader from "@/components/organisms/LoadingScreen/FirstVisitLoader";
 import LenisProvider from "@/components/providers/LenisProvider";
 import { Header } from "@/components/organisms/Header/Header";
-
+import { Footer } from "@/components/organisms/Footer/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,6 +33,7 @@ export default function RootLayout({
         <LenisProvider>
           <Header />
           <FirstVisitLoader>{children}</FirstVisitLoader>
+          <Footer />
         </LenisProvider>
       </body>
     </html>
