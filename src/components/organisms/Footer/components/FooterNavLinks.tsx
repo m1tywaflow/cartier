@@ -7,12 +7,10 @@ export const EXPLORE_LINKS = [
 export const CUSTOMER_LINKS = [
   { label: "Contact", href: "/contact" },
   { label: "Track", href: "/track" },
-  { label: "Orders", href: "/orders" },
 ];
 
 export const COMPANY_LINKS = [
   { label: "Find a shop", href: "/find-a-shop" },
-  { label: "Careers", href: "/careers" },
   { label: "Terms", href: "/terms" },
 ];
 
