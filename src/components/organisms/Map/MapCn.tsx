@@ -30,13 +30,9 @@ const MarkerTooltip = dynamic(
 const MapCn = () => {
   return (
     <section className="relative py-20">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px]  rounded-full" />
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 
--translate-x-1/2 -translate-y-1/2 
-w-[700px] h-[700px] bg-yellow-400/10 blur-[140px] rounded-full"
-      />
-      <div
-        className="relative max-w-7xl mx-auto h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden rounded-2xl border border-[#2A2A2A] bg-[#0B0B0B] shadow-[0_0_40px_rgba(250,204,21,0.05)]"
+        className="relative max-w-7xl mx-auto h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden rounded-2xl border border-[#2A2A2A] bg-[#0B0B0B]"
         data-lenis-prevent
       >
         <Map center={[21.0122, 52.2297]} zoom={12}>
@@ -50,9 +46,9 @@ w-[700px] h-[700px] bg-yellow-400/10 blur-[140px] rounded-full"
           <MapMarker longitude={21.0122} latitude={52.2297}>
             <MarkerContent>
               <div className="relative">
-                <span className="absolute inset-0 rounded-full bg-yellow-400/40 animate-ping" />
-                <div className="w-6 h-6 rounded-full bg-yellow-400/30 flex items-center justify-center">
-                  <div className="w-3 h-3 rounded-full bg-yellow-400 shadow-lg" />
+                <span className="absolute inset-0 rounded-full bg-white/40 animate-ping" />
+                <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
+                  <div className="w-3 h-3 rounded-full bg-white shadow-lg" />
                 </div>
               </div>
             </MarkerContent>
