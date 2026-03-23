@@ -29,7 +29,7 @@ const MarkerTooltip = dynamic(
 
 const MapCn = () => {
   return (
-    <section className="relative py-20">
+    <section className="relative py-20 bg-white">
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px]  rounded-full" />
       <div
         className="relative max-w-7xl mx-auto h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden rounded-2xl border border-[#2A2A2A] bg-[#0B0B0B]"
