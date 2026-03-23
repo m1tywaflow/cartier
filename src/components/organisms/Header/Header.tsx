@@ -1,16 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { HeaderMenu } from "./components/HeaderMenu";
 import Button from "@/components/atoms/Button/ButtonViewAll";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [show, setShow] = useState(true);
+  const lastScrollY = useRef(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#0a0a0a] border-b border-white/10">
+      <header
+        className={`fixed top-0 left-0 w-full z-50 bg-[#0a0a0a] border-b border-white/10 transition-transform duration-300 ${
+          show ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
         <div className="flex items-center justify-between px-8 h-[60px]">
           <Link
             href="/"
