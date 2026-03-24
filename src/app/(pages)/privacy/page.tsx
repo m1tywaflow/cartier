@@ -39,24 +39,57 @@ const PrivacyPage = () => {
       <Head>
         <title>Privacy Policy</title>
         <meta
-          name="descrition"
+          name="description"
           content="Our privacy and data handling practices"
         />
       </Head>
-      <main className="max-w-3xl mx-auto py-30 px-4">
-        <h1 className="text-4xl">Privacy Policy</h1>
-        <p className="text-lg text-gray-700 py-6">
-          Last updated: March 20, 2026
-        </p>
-        <div className="space-y-8">
-          {sections.map(({ id, title, content }) => (
-            <section key={id}>
-              <h1 className="text-xl font-semibold mb-2">{title}</h1>
-              <p className="text-gray-600 leading-relaxed">{content}</p>
-            </section>
-          ))}
-        </div>
-      </main>
+      <section className="bg-[#f8f8f7] text-black min-h-screen">
+        <main className="max-w-4xl mx-auto py-24 px-6">
+          <div className="mb-16">
+            <h1
+              className="text-5xl mb-4"
+              style={{
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                fontStyle: "italic",
+                fontWeight: 400,
+              }}
+            >
+              Privacy Policy
+            </h1>
+            <p className="text-sm text-gray-500 tracking-wide uppercase">
+              Last updated — March 24, 2026
+            </p>
+          </div>
+          <div className="space-y-8">
+            {sections.map(({ id, title, content }) => (
+              <section
+                key={id}
+                className="bg-white/70 backdrop-blur-sm border border-black/5 rounded-2xl p-6 hover:shadow-md transition-all duration-300"
+              >
+                <h2
+                  className="text-lg mb-3"
+                  style={{
+                    fontFamily: 'Georgia, "Times New Roman", serif',
+                    fontStyle: "italic",
+                  }}
+                >
+                  {title}
+                </h2>
+
+                <p className="text-gray-700 leading-relaxed text-[15px]">
+                  {content}
+                </p>
+              </section>
+            ))}
+          </div>
+          <div className="mt-16 pt-8 border-t border-black/10">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              If you have any questions regarding this Privacy Policy, please
+              contact us.
+            </p>
+          </div>
+        </main>
+      </section>
     </>
   );
 };
