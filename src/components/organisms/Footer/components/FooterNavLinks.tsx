@@ -6,7 +6,7 @@ export const EXPLORE_LINKS = [
 
 export const CUSTOMER_LINKS = [
   { label: "Contact", href: "/contact" },
-  { label: "Track", href: "/track" },
+  { label: "Help", href: "/help" },
 ];
 
 export const COMPANY_LINKS = [
