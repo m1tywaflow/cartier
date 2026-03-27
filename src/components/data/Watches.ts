@@ -41,4 +41,11 @@ export const WatchesData: Watch[] = [
     description:
       "This sporty chronograph features a distinctive tonneau-shaped steel case. It features a black lacquered dial with white Roman numerals, three subdials, and a date display at 3 o'clock. A sharkbone-style steel bracelet underscores the model's masculine character.",
   },
+  {
+    id: 6,
+    img: "/watches/watch6.png",
+    title: "Santos Large",
+    description:
+      "The Cartier Santos Large 40mm Watch 4072 is a bold and luxurious men’s timepiece crafted from stainless steel. It features a classic Roman numeral dial and a striking iced (fully diamond-set) design, enhanced with approximately 12 carats of diamonds for maximum brilliance.",
+  },
 ];

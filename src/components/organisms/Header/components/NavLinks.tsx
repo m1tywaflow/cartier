@@ -4,10 +4,7 @@ import Link from "next/link";
 
 export const NAV_LINKS = [
   { label: "Jawellery", href: "/jawellery" },
-  { label: "Watches", href: "/Watches" },
-  { label: "Art of living", href: "/art-of-living" },
-  { label: "Maison", href: "/maison" },
-  { label: "News", href: "/news" },
+  { label: "Watches", href: "/watches" },
 ];
 
 export function HeaderNavLinks() {

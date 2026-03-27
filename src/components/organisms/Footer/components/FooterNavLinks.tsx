@@ -1,7 +1,6 @@
 export const EXPLORE_LINKS = [
   { label: "About", href: "/about" },
   { label: "Watches", href: "/watches" },
-  { label: "New models", href: "/new-models" },
 ];
 
 export const CUSTOMER_LINKS = [

@@ -74,13 +74,6 @@ export function HeaderMenu({ isOpen, onClose }: HeaderMenuProps) {
           </Link>
         ))}
       </nav>
-      <Link
-        href="/shop"
-        onClick={onClose}
-        className="mt-16 self-start text-xs tracking-widest uppercase border border-white/30 text-white px-6 py-3 hover:bg-white hover:text-black transition-all duration-300"
-      >
-        Shop Now
-      </Link>
     </div>
   );
 }
