@@ -11,7 +11,7 @@ export default function FindAShopTypo() {
           </p>
           <p className="text-black/40 ">
             Need{" "}
-            <a href="/help" className="underline">
+            <a href="/help" className="underline hover:text-black transition duration-200">
               help
             </a>{" "}
             finding us? Check the map below or{" "}
