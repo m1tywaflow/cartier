@@ -45,9 +45,7 @@ export function Header() {
             Cartier
           </Link>
           <div className="flex items-center gap-4">
-            <Link href="/shop">
-              <Button>SHOP NOW</Button>
-            </Link>
+            
             <button
               onClick={() => setMenuOpen((v) => !v)}
               className="flex flex-col justify-center items-center cursor-pointer gap-[5px] w-8 h-8"
