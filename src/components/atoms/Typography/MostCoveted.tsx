@@ -11,7 +11,7 @@ export default function MostCoveted() {
         <h1 className="font-serif ">The Most Coveted</h1>
         <h1 className={` ${imperial.className} text-6xl`}>Luxury Watches</h1>
       </div>
-      <Button />
+      <Button href="/watches" />
     </div>
   );
 }

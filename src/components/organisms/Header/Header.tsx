@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { HeaderMenu } from "./components/HeaderMenu";
-import Button from "@/components/atoms/Button/ButtonViewAll";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -45,7 +44,6 @@ export function Header() {
             Cartier
           </Link>
           <div className="flex items-center gap-4">
-            
             <button
               onClick={() => setMenuOpen((v) => !v)}
               className="flex flex-col justify-center items-center cursor-pointer gap-[5px] w-8 h-8"

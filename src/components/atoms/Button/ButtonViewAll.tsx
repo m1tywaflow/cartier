@@ -1,13 +1,21 @@
 import styled from "styled-components";
-
-const Button = ({ children = "View All" }: { children?: React.ReactNode }) => {
+import Link from "next/link";
+const Button = ({
+  children = "View All",
+  href = "/",
+}: {
+  children?: React.ReactNode;
+  href?: string;
+}) => {
   return (
     <StyledWrapper>
-      <button className="btn-31">
-        <span className="text-container">
-          <span className="text">{children}</span>
-        </span>
-      </button>
+      <Link href={href}>
+        <button className="btn-31">
+          <span className="text-container">
+            <span className="text">{children}</span>
+          </span>
+        </button>
+      </Link>
     </StyledWrapper>
   );
 };
