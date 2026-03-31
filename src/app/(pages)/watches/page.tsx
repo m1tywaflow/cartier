@@ -1,10 +1,12 @@
 import WatchCard from "@/components/molecules/WatchCard/WatchCard";
 import { WatchesData } from "@/components/data/Watches";
+import Breadcrumb from "@/components/atoms/Breadcrumb/Breadcrumb";
 
 export default function Watches() {
   return (
     <main className="min-h-screen bg-[#F5F2EE]">
       <section className="max-w-7xl mx-auto px-8 pt-24 pb-16">
+        <Breadcrumb />
         <p className="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">
           Fine Timepieces
         </p>

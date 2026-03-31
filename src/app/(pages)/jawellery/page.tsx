@@ -1,13 +1,16 @@
 import { jewelryData } from "@/components/data/jewelry";
 import JewCard from "@/components/molecules/JawCard/JewCard";
+import Breadcrumb from "@/components/atoms/Breadcrumb/Breadcrumb";
 export default function Jawellery() {
   return (
     <>
       <main className="min-h-screen bg-[#F5F2EE]">
         <section className="max-w-7xl mx-auto px-8 pt-24 pb-16">
+          <Breadcrumb />
           <p className="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">
             Fine Jewellery
           </p>
+
           <h1 className="text-[clamp(3rem,8vw,7rem)] font-light leading-none tracking-tight text-stone-900 mb-6">
             The Collection
           </h1>
