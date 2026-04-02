@@ -36,7 +36,7 @@ export default function WatchCard({ watch }: { watch: Watch }) {
       <div className="flex justify-center mt-4">
         <button
           onClick={() => setOpen(true)}
-          className="bg-black text-white px-6 py-2 transition hover:bg-stone-800"
+          className="bg-black text-white border px-6 py-2 transition hover:bg-stone-800 cursor-pointer duration-200 "
         >
           Open
         </button>
@@ -51,7 +51,7 @@ export default function WatchCard({ watch }: { watch: Watch }) {
 
             <button
               onClick={() => setOpen(false)}
-              className="mt-2 text-sm text-stone-600 hover:text-black"
+              className="mt-2 text-sm text-stone-600 hover:text-black cursor-pointer duration-200 transition"
             >
               Close
             </button>
