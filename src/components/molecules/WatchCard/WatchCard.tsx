@@ -8,7 +8,7 @@ export default function WatchCard({ watch }: { watch: Watch }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="group relative flex flex-col w-full cursor-pointer">
+    <div className="group relative flex flex-col w-full">
       <div className="relative w-full h-[380px] overflow-hidden bg-stone-100">
         <Image
           src={watch.img}
@@ -51,7 +51,7 @@ export default function WatchCard({ watch }: { watch: Watch }) {
 
             <button
               onClick={() => setOpen(false)}
-              className="mt-2 text-sm text-stone-600 hover:text-black cursor-pointer duration-200 transition"
+              className="mt-2 text-sm text-white bg-black px-6 py-2 hover:bg-stone-800 cursor-pointer duration-200 transition"
             >
               Close
             </button>

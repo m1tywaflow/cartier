@@ -53,7 +53,7 @@ export default function JewCard({ jewelry }: { jewelry: Jewelry }) {
 
               <button
                 onClick={() => setOpen(false)}
-                className="mt-2 text-sm text-stone-600 hover:text-black cursor-pointer duration-200 transition"
+                className="mt-2 text-sm text-white bg-black px-6 py-2 hover:bg-white cursor-pointer duration-200 transition"
               >
                 Close
               </button>
