@@ -82,10 +82,16 @@ const PrivacyPage = () => {
               </section>
             ))}
           </div>
-          <div className="mt-16 pt-8 border-t border-black/10">
+          <div className="mt-16 pt-8 border-t border-black/10 text-center">
             <p className="text-xs text-gray-500 leading-relaxed">
-              If you have any questions regarding this Privacy Policy, please
-              contact us.
+              If you have any questions regarding this Privacy Policy, please{" "}
+              <a
+                href="/contact"
+                className="underline hover:text-black duration-200 transition"
+              >
+                contact us
+              </a>
+              .
             </p>
           </div>
         </main>
