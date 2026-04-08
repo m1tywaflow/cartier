@@ -102,7 +102,6 @@ const ShinyText: React.FC<ShinyTextProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [direction]);
 
-
   const backgroundPosition = useTransform(
     progress,
     (p) => `${150 - p * 2}% center`
@@ -137,5 +136,4 @@ const ShinyText: React.FC<ShinyTextProps> = ({
 };
 
 export default ShinyText;
-//   plugins: [],
-// };
+
