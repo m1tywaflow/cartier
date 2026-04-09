@@ -58,7 +58,6 @@ const ShinyText: React.FC<ShinyTextProps> = ({
 
     elapsedRef.current += deltaTime;
 
-    // Animation goes from 0 to 100
     if (yoyo) {
       const cycleDuration = animationDuration + delayDuration;
       const fullCycle = cycleDuration * 2;
@@ -89,7 +88,6 @@ const ShinyText: React.FC<ShinyTextProps> = ({
         const p = (cycleTime / animationDuration) * 100;
         progress.set(directionRef.current === 1 ? p : 100 - p);
       } else {
-        // Delay phase - hold at end (shine off-screen)
         progress.set(directionRef.current === 1 ? 100 : 0);
       }
     }
@@ -99,7 +97,6 @@ const ShinyText: React.FC<ShinyTextProps> = ({
     directionRef.current = direction === "left" ? 1 : -1;
     elapsedRef.current = 0;
     progress.set(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [direction]);
 
   const backgroundPosition = useTransform(
@@ -136,4 +133,3 @@ const ShinyText: React.FC<ShinyTextProps> = ({
 };
 
 export default ShinyText;
-
