@@ -12,6 +12,8 @@ type Props = {
   children: ReactNode;
 };
 
+//export lenis best set
+
 export default function LenisProvider({ children }: Props) {
   useEffect(() => {
     const lenis = new Lenis({
