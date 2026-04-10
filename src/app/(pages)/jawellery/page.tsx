@@ -1,6 +1,7 @@
 import { jewelryData } from "@/components/data/jewelry";
 import JewCard from "@/components/molecules/JawCard/JewCard";
 import Breadcrumb from "@/components/atoms/Breadcrumb/Breadcrumb";
+
 export default function Jawellery() {
   return (
     <>
@@ -10,7 +11,6 @@ export default function Jawellery() {
           <p className="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">
             Fine Jewellery
           </p>
-
           <h1 className="text-[clamp(3rem,8vw,7rem)] font-light leading-none tracking-tight text-stone-900 mb-6">
             The Collection
           </h1>
@@ -21,8 +21,8 @@ export default function Jawellery() {
           </p>
         </section>
         <section className="max-w-7xl mx-auto px-8 pb-24">
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-8">
-            {jewelryData.map((jewelry) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {jewelryData.slice(0, 6).map((jewelry) => (
               <JewCard key={jewelry.id} jewelry={jewelry} />
             ))}
           </div>
