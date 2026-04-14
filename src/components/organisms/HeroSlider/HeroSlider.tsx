@@ -31,6 +31,15 @@ const scenes = [
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [fading, setFading] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setFading(true);
@@ -42,54 +51,69 @@ export default function HeroSlider() {
 
     return () => clearInterval(timer);
   }, []);
+
   const scene = scenes[current];
+
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      <div
-        className={`absolute inset-0 transition-opacity duration-700 ${
-          fading ? "opacity-0" : "opacity-100"
-        }`}
-      >
-        <Image src={scene.bg} alt="bg" fill className="object-cover" />
-      </div>
-
-      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-        <CurvedLoop
-          marqueeText="CARTIER - CARTIER - CARTIER - CARTIER"
-          speed={1}
-          curveAmount={-10}
-          direction="right"
-          interactive
-          className="custom-text-style font-mono"
-        />
-      </div>
-
-      <div
-        className={`relative z-20 flex flex-col items-center justify-center h-full transition-opacity duration-700 ${
-          fading ? "opacity-0" : "opacity-100"
-        }`}
-      >
-        <div style={{ backgroundColor: scene.bgColor }} className=" p-10">
-          <Image
-            src={scene.watch}
-            alt="watch"
-            width={300}
-            height={300}
-            className="hover:scale-115 transition duration-200"
-          />
-        </div>
-        <div className="text-3xl text-center font-serif pt-10 space-y-4">
-          <h1>Elegance and Precision</h1>
-          <h1 className="flex gap-3">
-            The Finest
-            <span
-              className={`${imperial.className} text-5xl relative bottom-2`}
-            >
-              Luxury Watches
-            </span>
+    <>
+      {!isDesktop && (
+        <div className="flex w-full h-screen bg-black items-center justify-center">
+          <h1 className={`${imperial.className} text-white text-5xl`}>
+            CARTIER
           </h1>
         </div>
-      </div>
-    </div>
+      )}
+
+      {isDesktop && (
+        <div className="relative w-full h-screen overflow-hidden">
+          <div
+            className={`absolute inset-0 transition-opacity duration-700 ${
+              fading ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <Image src={scene.bg} alt="bg" fill className="object-cover" />
+          </div>
+
+          <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+            <CurvedLoop
+              marqueeText="CARTIER - CARTIER - CARTIER - CARTIER"
+              speed={1}
+              curveAmount={-10}
+              direction="right"
+              interactive
+              className="custom-text-style font-mono"
+            />
+          </div>
+
+          <div
+            className={`relative z-20 flex flex-col items-center justify-center h-full transition-opacity duration-700 ${
+              fading ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <div style={{ backgroundColor: scene.bgColor }} className="p-10">
+              <Image
+                src={scene.watch}
+                alt="watch"
+                width={300}
+                height={300}
+                className="hover:scale-115 transition duration-200"
+              />
+            </div>
+
+            <div className="text-3xl text-center font-serif pt-10 space-y-4">
+              <h1>Elegance and Precision</h1>
+              <h1 className="flex gap-3">
+                The Finest
+                <span
+                  className={`${imperial.className} text-5xl relative bottom-2`}
+                >
+                  Luxury Watches
+                </span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
