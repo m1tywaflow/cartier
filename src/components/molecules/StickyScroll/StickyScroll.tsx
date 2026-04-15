@@ -19,7 +19,110 @@ interface StickyScrollProps {
   slides: Slide[];
 }
 
-export function StickyScroll({
+
+function MobileSlider({
+  title,
+  titleItalic,
+  titleEnd,
+  slides,
+}: StickyScrollProps) {
+  const [current, setCurrent] = useState(0);
+
+  const prev = () => setCurrent((c) => Math.max(c - 1, 0));
+  const next = () => setCurrent((c) => Math.min(c + 1, slides.length - 1));
+
+  const slide = slides[current];
+
+  return (
+    <div className="relative w-full flex flex-col">
+      <div className="px-6 pt-8 pb-4">
+        <h2 className="text-white text-2xl font-light leading-snug">
+          {title}{" "}
+          <em className="font-serif italic font-normal">{titleItalic}</em>{" "}
+          {titleEnd}
+        </h2>
+      </div>
+
+      <div className="relative w-full" style={{ aspectRatio: "3/4" }}>
+        <div className="absolute inset-0">
+          <Image
+            src={slide.bgImage}
+            alt=""
+            fill
+            className="object-cover"
+            priority={current === 0}
+            sizes="100vw"
+          />
+        </div>
+
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-3/4 h-full">
+            <Image
+              src={slide.image}
+              alt={slide.category}
+              fill
+              className="object-contain"
+              priority={current === 0}
+              sizes="75vw"
+            />
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 flex justify-center pointer-events-none">
+          <span className="text-[6rem] font-serif italic text-white leading-none opacity-80">
+            {slide.index}
+          </span>
+        </div>
+      </div>
+
+      <div className="px-6 py-6 flex flex-col gap-4">
+        <div>
+          <p className="text-white text-lg font-medium mb-2">
+            {slide.category}
+          </p>
+          <div className="w-full h-px bg-white/30 mb-3" />
+          <p className="text-white/50 text-sm">{slide.description}</p>
+        </div>
+
+        <div className="flex items-center justify-between mt-2">
+          <button
+            onClick={prev}
+            disabled={current === 0}
+            aria-label="Previous"
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 text-white disabled:opacity-30 transition-opacity"
+          >
+            ‹
+          </button>
+
+          <div className="flex gap-2">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                aria-label={`Slide ${i + 1}`}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${
+                  i === current ? "bg-white scale-125" : "bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={next}
+            disabled={current === slides.length - 1}
+            aria-label="Next"
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 text-white disabled:opacity-30 transition-opacity"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function DesktopStickyScroll({
   title,
   titleItalic,
   titleEnd,
@@ -36,7 +139,6 @@ export function StickyScroll({
   const [, forceUpdate] = useState(0);
 
   useEffect(() => {
-    // Set initial state — show first slide
     const show = (i: number) => {
       gsap.set(bgsRef.current[i], { autoAlpha: 1 });
       gsap.set(imagesRef.current[i], { autoAlpha: 1, yPercent: 0 });
@@ -64,7 +166,6 @@ export function StickyScroll({
 
       const forward = next > prev;
 
-      // out prev
       gsap.to(bgsRef.current[prev], { autoAlpha: 0, duration: 0.5 });
       gsap.to(imagesRef.current[prev], {
         yPercent: forward ? -30 : 30,
@@ -82,7 +183,6 @@ export function StickyScroll({
         duration: 0.3,
       });
 
-      // in next
       gsap.fromTo(
         imagesRef.current[next],
         { yPercent: forward ? 100 : -100, autoAlpha: 0 },
@@ -130,7 +230,7 @@ export function StickyScroll({
     return () => window.removeEventListener("scroll", onScroll);
   }, [slides]);
 
-  const totalHeight = slides.length * 100; // vh units
+  const totalHeight = slides.length * 100;
 
   return (
     <div
@@ -138,12 +238,10 @@ export function StickyScroll({
       style={{ height: `${totalHeight}vh` }}
       className="relative w-full"
     >
-      {/* Sticky viewport */}
       <div
         ref={stickyRef}
         className="sticky top-0 h-screen w-full overflow-hidden flex"
       >
-        {/* Backgrounds */}
         <div className="absolute inset-0 z-0">
           {slides.map((slide, i) => (
             <div
@@ -166,7 +264,6 @@ export function StickyScroll({
           ))}
         </div>
 
-        {/* Left side */}
         <div className="w-[52%] h-full flex flex-col justify-between p-12 z-10 relative">
           <h2 className="text-white text-3xl font-light leading-snug max-w-xs">
             {title}{" "}
@@ -193,7 +290,6 @@ export function StickyScroll({
           </div>
         </div>
 
-        {/* Images */}
         <div className="w-[38%] h-full relative overflow-hidden z-10">
           {slides.map((slide, i) => (
             <div
@@ -216,7 +312,6 @@ export function StickyScroll({
           ))}
         </div>
 
-        {/* Numbers */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
           {slides.map((slide, i) => (
             <div
@@ -235,5 +330,26 @@ export function StickyScroll({
         </div>
       </div>
     </div>
+  );
+}
+
+
+export function StickyScroll(props: StickyScrollProps) {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  if (isMobile === null) return null;
+
+  return isMobile ? (
+    <MobileSlider {...props} />
+  ) : (
+    <DesktopStickyScroll {...props} />
   );
 }
