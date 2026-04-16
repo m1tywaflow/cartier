@@ -144,7 +144,6 @@ export const ContactForm = () => {
               }}
             >
               <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
               <span className="relative text-white">
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">
