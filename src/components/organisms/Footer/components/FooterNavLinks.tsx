@@ -1,6 +1,7 @@
 export const EXPLORE_LINKS = [
   { label: "About", href: "/about" },
   { label: "Watches", href: "/watches" },
+  { label: "Jawellery", href: "/jawellery" },
 ];
 
 export const CUSTOMER_LINKS = [

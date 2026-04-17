@@ -133,17 +133,19 @@ export default function WatchBanner() {
         />
         <div
           ref={leftRef}
-          className="absolute left-0 top-0 h-full w-[45%] bg-red-700 z-10 flex flex-col justify-center px-12"
+          className="absolute left-0 top-0 h-full w-[45%] bg-red-700 z-10 flex flex-col justify-center px-4 sm:px-8 md:px-12"
         >
-          <p className="text-white/60 text-xs tracking-widest uppercase mb-3">
+          <p className="text-white/60 text-[10px] sm:text-xs tracking-widest uppercase mb-2 sm:mb-3">
             Upgrade
           </p>
-          <h2 className="text-white font-serif italic text-4xl leading-tight mb-4">
+
+          <h2 className="text-white font-serif italic text-2xl sm:text-3xl md:text-4xl leading-tight mb-3 sm:mb-4">
             Your Timepiece
             <br />
             <span className="not-italic font-light">Collection Today</span>
           </h2>
-          <p className="text-white/70 text-sm max-w-xs leading-relaxed">
+
+          <p className="text-white/70 text-sm sm:text-base md:text-xl max-w-xs leading-relaxed">
             Don&apos;t miss out on the opportunity to upgrade your timepiece
             collection today and add a touch of elegance to your everyday look.
           </p>
