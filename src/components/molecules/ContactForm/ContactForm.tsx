@@ -178,7 +178,11 @@ export const ContactForm = () => {
           </form>
         </div>
         <p className="mt-6 text-center text-black/40 text-xs tracking-wide">
-          We'll reply within 24 hours
+          We usually respond within a few hours • No spam, ever
+        </p>
+
+        <p className="mt-2 text-center text-black/30 text-xs">
+          Or email us directly at hello@yourdomain.com
         </p>
       </div>
     </section>
